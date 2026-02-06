@@ -19,3 +19,4 @@ schema:
   npm_packages:
     - str
 image: ghcr.io/lalexdotcom/{arch}-js-automations
+panel_icon: mdi:robot-excited
