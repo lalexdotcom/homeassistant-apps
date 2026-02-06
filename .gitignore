@@ -161,5 +161,8 @@ dist/
 .env
 
 # HA
-config/
-*.dev.ts
+.ha/
+config
+
+# Dev stuff
+*.dev.*

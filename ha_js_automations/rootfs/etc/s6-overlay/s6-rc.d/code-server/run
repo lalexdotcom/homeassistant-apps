@@ -9,11 +9,6 @@ declare -a options
 
 bashio::log.info 'Starting code-server...'
 
-# config_path="/config"
-# if bashio::config.has_value 'config_path'; then
-#     config_path=$(bashio::config 'config_path')
-# fi
-
 options+=(--port 8099)
 options+=(--user-data-dir "/data/vscode")
 options+=(--extensions-dir "/data/vscode/extensions")

@@ -45,6 +45,7 @@
 	"mounts": [
 		"type=volume,target=/var/lib/docker",
 		"type=volume,target=/mnt/supervisor",
-		"type=bind,source=./config,target=/mnt/supervisor/homeassistant,consistency=cached"
+		"type=bind,source=./.ha/config,target=/mnt/supervisor/homeassistant,consistency=cached",
+		"type=bind,source=./.ha/addons_config,target=/mnt/supervisor/addon_configs,consistency=cached"
 	]
 }

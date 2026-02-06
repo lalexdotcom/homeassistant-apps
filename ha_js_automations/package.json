@@ -2,5 +2,8 @@
 	"devDependencies": {
 		"@biomejs/biome": "^2.3.13",
 		"@types/node": "^24.10.10"
+	},
+	"scripts": {
+		"bump": "cd .. && pnpm run bump --folder=./$(basename $OLDPWD)"
 	}
 }

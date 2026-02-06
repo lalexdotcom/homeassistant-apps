@@ -5,32 +5,12 @@
 # Sets up TS types
 # ==============================================================================
 
-# states=$(curl -sb -X GET -H "Authorization: Bearer ${SUPERVISOR_TOKEN}" -H "Content-Type: application/json" http://supervisor/core/api/states)
-# mkdir -p /automations/scripts/node_modules
 
-# find /automations
-echo "ls /"
-ls -Al /
 
-echo "ls /automations"
-ls -Al /automations
-
-echo "ls -Al /automations/ha-js-automations/"
-ls -Al /automations/ha-js-automations/
-
-# echo "pnpm install"
-# cd /automations || bashio::debug "Could not change working directory"
-# pnpm install --frozen-lockfile
-# pnpm run build
-# cat /automations/lib/package.json | jq '.dependencies.ha-ws-js-sugar="'"${SUGAR_VERSION}"'"' > /automations/scripts/package.json
-# mkdir -p /automations/const
 entities=$(curl -sb -X GET -H "Authorization: Bearer ${SUPERVISOR_TOKEN}" -H "Content-Type: application/json" http://supervisor/core/api/states \
  | jq -M --tab '[ .[].entity_id ]')
 echo "export default ${entities} as const;" > /automations/ha-js-automations/src/const/entities.ts
 
-
-# echo "${entities}" > /automations/const/entities.json
-# echo "export const ENTITIES = ${entities} as const;" > /automations/const/entities.ts
 
 actions=$(curl -sb -X GET -H "Authorization: Bearer ${SUPERVISOR_TOKEN}" -H "Content-Type: application/json" http://supervisor/core/api/services \
  | jq -M --tab '[ .[] | {(.domain): (.services | keys)} ] | add')
@@ -40,8 +20,21 @@ cat /automations/ha-js-automations/src/const/actions.ts
 cd /automations/ || bashio::debug "Could not change working directory"
 pnpm build
 
+# Install user configured/requested packages
+if bashio::config.has_value 'npm_packages'; then
+    cd /automations/main || bashio::exit.nok "Could not change directory to Node-RED"
+
+    bashio::log.info "Starting installation of custom NPM/Node-RED packages..."
+    for package in $(bashio::config 'npm_packages'); do
+        npmlist+=("$package")
+    done
+
+    pnpm install \
+        --no-optional \
+        --only=production \
+        "${npmlist[@]}" \
+           || bashio::exit.nok "Failed to install a specified pnpm package"
+fi
+
 echo "ls -Al /automations/ha-js-automations/dist/"
 ls -Al /automations/ha-js-automations/dist/
-# echo "${actions}"
-# echo "${actions}" > /automations/const/actions.json
-# echo "export const ACTIONS = ${actions} as const;" > /automations/const/actions.ts
