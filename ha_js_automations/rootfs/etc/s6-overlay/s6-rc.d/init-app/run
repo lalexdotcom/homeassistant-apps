@@ -24,7 +24,7 @@ pnpm build
 if bashio::config.has_value 'npm_packages'; then
     cd /automations/main || bashio::exit.nok "Could not change directory to Node-RED"
 
-    bashio::log.info "Starting installation of custom NPM/Node-RED packages..."
+    bashio::log.info "Starting installation of custom NPM packages..."
     for package in $(bashio::config 'npm_packages'); do
         npmlist+=("$package")
     done
