@@ -1,5 +1,4 @@
-Home Assistant Apps
-====================
+# Home Assistant Apps
 
 This repository contains my Home Assistant Apps (formerly called "add-ons").
 

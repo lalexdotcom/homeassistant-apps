@@ -42,11 +42,13 @@ This app brings modern web development practices to Home Assistant automation by
 The app provides the following configuration options:
 
 ### `log_level`
+
 - Set the logging level for the application
 - Options: `trace`, `debug`, `info`, `notice`, `warning`, `error`, `fatal`
 - Default: `info`
 
 ### `npm_packages`
+
 - List of additional npm packages to install in your automation environment
 - Example: `axios`, `date-fns`, `lodash`
 - Default: `[]`
@@ -58,17 +60,19 @@ The app provides the following configuration options:
 Create a script in the VSCode editor (files are stored in `/automations/main/scripts`):
 
 ```typescript
-import { connection } from 'ha-js-automations';
+import { connection } from "ha-js-automations";
 
 // Get an entity
-const testBoolean = await connection.getEntity('input_boolean.test_input_boolean');
+const testBoolean = await connection.getEntity(
+  "input_boolean.test_input_boolean",
+);
 
 // Access the current state
-console.log('Current state:', testBoolean.state);
+console.log("Current state:", testBoolean.state);
 
 // Listen to state changes
 testBoolean?.addListener((newState, oldState) => {
-  console.log('State changed from:', oldState, 'to', newState);
+  console.log("State changed from:", oldState, "to", newState);
 });
 ```
 
@@ -79,7 +83,7 @@ Your automation scripts should be placed in the `scripts` directory. Each TypeSc
 The key difference from using `ha-ws-js-sugar` directly is that you must import `connection` from the `ha-js-automations` package:
 
 ```typescript
-import { connection } from 'ha-js-automations';
+import { connection } from "ha-js-automations";
 ```
 
 This provides a pre-configured WebSocket connection to your Home Assistant instance.
@@ -139,7 +143,7 @@ This starts a development environment where you can test the API against your Ho
 Import the pre-configured connection to Home Assistant:
 
 ```typescript
-import { connection } from 'ha-js-automations';
+import { connection } from "ha-js-automations";
 ```
 
 ### Getting Entities
@@ -147,7 +151,7 @@ import { connection } from 'ha-js-automations';
 Use `connection.getEntity()` to retrieve an entity by its ID:
 
 ```typescript
-const entity = await connection.getEntity('input_boolean.test_input_boolean');
+const entity = await connection.getEntity("input_boolean.test_input_boolean");
 ```
 
 ### Accessing Entity State
@@ -155,8 +159,8 @@ const entity = await connection.getEntity('input_boolean.test_input_boolean');
 Access the current state of an entity:
 
 ```typescript
-const entity = await connection.getEntity('light.living_room');
-console.log(entity.state);  // Current state value
+const entity = await connection.getEntity("light.living_room");
+console.log(entity.state); // Current state value
 ```
 
 ### Listening to State Changes
@@ -164,9 +168,9 @@ console.log(entity.state);  // Current state value
 Add a listener to respond to entity state changes:
 
 ```typescript
-const entity = await connection.getEntity('sensor.temperature');
+const entity = await connection.getEntity("sensor.temperature");
 entity?.addListener((newState, oldState) => {
-  console.log('Changed from:', oldState, 'to:', newState);
+  console.log("Changed from:", oldState, "to:", newState);
 });
 ```
 
