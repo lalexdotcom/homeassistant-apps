@@ -15,7 +15,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "rslib build",
+    "build": "rslib build --log-level silent",
     "play": "tsx --watch src/play.dev.ts"
   },
   "dependencies": {

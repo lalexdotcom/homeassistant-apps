@@ -15,10 +15,9 @@ echo "export default ${entities} as const;" > /automations/ha-js-automations/src
 actions=$(curl -sb -X GET -H "Authorization: Bearer ${SUPERVISOR_TOKEN}" -H "Content-Type: application/json" http://supervisor/core/api/services \
  | jq -M --tab '[ .[] | {(.domain): (.services | keys)} ] | add')
 echo "export default ${actions} as const;" > /automations/ha-js-automations/src/const/actions.ts
-cat /automations/ha-js-automations/src/const/actions.ts
 
 cd /automations/ || bashio::debug "Could not change working directory"
-# pnpm build
+pnpm build
 
 # Install user configured/requested packages
 if bashio::config.has_value 'npm_packages'; then
@@ -33,6 +32,3 @@ if bashio::config.has_value 'npm_packages'; then
         "${npmlist[@]}" \
            || bashio::exit.nok "Failed to install a specified pnpm package"
 fi
-
-echo "ls -Al /automations/ha-js-automations/dist/"
-ls -Al /automations/ha-js-automations/dist/

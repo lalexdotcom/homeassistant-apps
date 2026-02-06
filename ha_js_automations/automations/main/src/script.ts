@@ -1,5 +1,3 @@
-import { argv, execArgv } from "node:process";
-
-console.log("Starting script process with PID", argv, execArgv);
+import { argv } from "node:process";
 
 await import(argv[2]);

@@ -97,6 +97,7 @@ This provides a pre-configured WebSocket connection to your Home Assistant insta
 
 - [ ] review and optimize Docker image
 - [ ] optimise inter process communication (IPC)
+- [ ] override console to use bashio
 
 ### Project Structure
 
