@@ -1,0 +1,5 @@
+packages:
+  - main
+  - ha-js-automations
+
+linkWorkspacePackages: true

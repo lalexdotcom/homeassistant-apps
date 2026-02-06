@@ -1,0 +1,7 @@
+.git
+.gitignore
+*.md
+automations/**/node_modules
+automations/**/dist
+automations/**/.pnpm_store
+automations/**/*.dev.ts

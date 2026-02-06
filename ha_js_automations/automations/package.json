@@ -1,0 +1,21 @@
+{
+  "name": "automations",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "pnpm --filter ha-js-automations build",
+    "start": "pnpm --filter main start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.28.2",
+  "devDependencies": {
+    "@rslib/core": "^0.19.4",
+    "@types/node": "^24.10.10",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
+}

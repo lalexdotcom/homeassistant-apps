@@ -1,0 +1,86 @@
+{
+    "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+    "assist": {
+        "actions": {
+            "source": {
+                "organizeImports": "on"
+            }
+        }
+    },
+    "vcs": {
+        "enabled": true,
+        "clientKind": "git",
+        "useIgnoreFile": true
+    },
+    "formatter": {
+        "indentStyle": "tab"
+    },
+    "javascript": {
+        "formatter": {
+            "quoteStyle": "double"
+        }
+    },
+    "css": {
+        "parser": {
+            "cssModules": true
+        }
+    },
+    "linter": {
+        "enabled": true,
+        "rules": {
+            "recommended": true,
+            "correctness": {
+                "noUnusedImports": {
+                    "level": "warn",
+                    "fix": "safe"
+                }
+            },
+            "style": {
+                "useSingleVarDeclarator": {
+                    "level": "warn",
+                    "fix": "safe"
+                },
+                "noNonNullAssertion": {
+                    "level": "warn"
+                },
+                "noUselessElse": {
+                    "level": "off"
+                },
+                "useTemplate": {
+                    "level": "info"
+                },
+                "useNodejsImportProtocol": {
+                    "level": "warn",
+                    "fix": "safe"
+                }
+            },
+            "suspicious": {
+                "noGlobalIsNan": {
+                    "level": "warn",
+                    "fix": "safe"
+                },
+                "noDoubleEquals": {
+                    "level": "warn",
+                    "fix": "unsafe"
+                },
+                "noAssignInExpressions": {
+                    "level": "off"
+                },
+                "noArrayIndexKey": {
+                    "level": "warn"
+                },
+                "noExplicitAny": {
+                    "level": "warn"
+                }
+            },
+            "a11y": {
+                "useKeyWithClickEvents": {
+                    "level": "warn"
+                },
+                "useKeyWithMouseEvents": {
+                    "level": "warn"
+                }
+            }
+        }
+    }
+}

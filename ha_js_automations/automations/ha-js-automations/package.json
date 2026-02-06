@@ -1,0 +1,25 @@
+{
+  "name": "ha-js-automations",
+  "version": "0.0.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rslib build",
+    "play": "tsx --watch src/play.dev.ts"
+  },
+  "dependencies": {
+    "ha-ws-js-sugar": "1.0.3-alpha.20",
+    "home-assistant-js-websocket": "^9.6.0"
+  }
+}

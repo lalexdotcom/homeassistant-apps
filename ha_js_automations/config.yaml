@@ -1,0 +1,22 @@
+name: "JS Automations"
+description: "Create Home Assistant automations using JavaScript."
+version: "1.0.0"
+slug: "ha_js_automations"
+init: false
+ingress: true
+homeassistant_api: true
+arch:
+  - aarch64
+  - amd64
+map:
+  - type: addon_config
+    read_only: False
+    path: /automations/main/scripts
+options:
+  npm_packages: []
+schema:
+  log_level: list(trace|debug|info|notice|warning|error|fatal)?
+  npm_packages:
+    - str
+environment:
+  SUGAR_VERSION: "1.0.1-alpha.4"
