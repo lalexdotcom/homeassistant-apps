@@ -1,6 +1,6 @@
 name: JS Automations
 description: Create Home Assistant automations using JavaScript/Typescript.
-version: 0.1.0
+version: 0.1.1
 slug: ha_js_automations
 init: false
 ingress: true
@@ -18,5 +18,5 @@ schema:
   log_level: list(trace|debug|info|notice|warning|error|fatal)?
   npm_packages:
     - str
-# image: ghcr.io/lalexdotcom/{arch}-js-automations
+image: ghcr.io/lalexdotcom/{arch}-js-automations
 panel_icon: mdi:robot-excited
