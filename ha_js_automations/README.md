@@ -1,5 +1,8 @@
 # JS/TS Automations App
 
+> [!WARNING]
+> This application is currently a **Proof of Concept (POC)**. It is not yet optimized for performance and should **not be used in production environments**.
+
 Create Home Assistant automations using **JavaScript** or **TypeScript**.
 
 This app brings modern web development practices to Home Assistant automation by allowing you to write automations in TypeScript/JavaScript instead of YAML. It provides a complete development environment with VSCode integration, TypeScript support, and hot-reload capabilities.
@@ -89,6 +92,11 @@ import { connection } from "ha-js-automations";
 This provides a pre-configured WebSocket connection to your Home Assistant instance.
 
 ## Development
+
+### TODO List
+
+- [ ] review and optimize Docker image
+- [ ] optimise inter process communication (IPC)
 
 ### Project Structure
 
