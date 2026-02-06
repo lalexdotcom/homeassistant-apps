@@ -6,17 +6,6 @@ import { createConnection } from "ha-ws-js-sugar";
 import type { HassEvent } from "home-assistant-js-websocket";
 import type { Child, Main } from "./types";
 
-console.log(
-	"Starting main process with PID",
-	process.pid,
-	process.argv,
-	process.execArgv,
-);
-
-process.on("uncaughtException", (err) => {
-	console.error("Uncaught exception:", err);
-});
-
 (async () => {
 	const connection = await createConnection({
 		host: env.HA_HOST ?? "http://supervisor/core",
@@ -79,9 +68,8 @@ process.on("uncaughtException", (err) => {
 
 	const registerChild = (child: ChildProcess) => {
 		registeredChildren.add(child);
-		console.log(`Registered child process with PID ${child.pid}`);
 		child.on("error", (err) => {
-			console.log(`Error in child process ${child.pid}:`, err);
+			console.error(`Error in child process ${child.pid}:`, err);
 		});
 		child.on("exit", () => {
 			if (registeredChildren.delete(child)) {

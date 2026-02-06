@@ -98,6 +98,8 @@ This provides a pre-configured WebSocket connection to your Home Assistant insta
 - [ ] review and optimize Docker image
 - [ ] optimise inter process communication (IPC)
 - [ ] override console to use bashio
+- [ ] error handlink
+- [ ] custom vscode extension to display running automations
 
 ### Project Structure
 
