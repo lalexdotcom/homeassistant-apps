@@ -1,5 +1,11 @@
 # JS Automations App
 
+
+
+https://github.com/user-attachments/assets/9a0d00fb-50f7-42fd-9256-b25d50ba362b
+
+
+
 > [!WARNING]
 > This application is currently a **Proof of Concept (POC)**. It is not yet optimized for performance and should **not be used in production environments**.
 
