@@ -1,5 +1,5 @@
 {
-	"name": "Example devcontainer for add-on repositories",
+	"name": "LAlex devcontainer for HA Apps repository",
 	"image": "ghcr.io/home-assistant/devcontainer:2-addons",
 	"features": {
 		"ghcr.io/devcontainers/features/node:1": {

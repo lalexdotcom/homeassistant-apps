@@ -205,10 +205,17 @@ RUN rm -fr \
 # Copy root filesystem
 COPY rootfs /
 
-# Copy PNPM workspace
 COPY automations /automations
 WORKDIR /automations
+
+FROM base AS build
 RUN pnpm install --frozen-lockfile
+RUN pnpm build
+
+FROM base
+COPY --from=build /automations/ha-js-automations/dist /automations/ha-js-automations/dist
+# Copy PNPM workspace
+RUN pnpm install --no-optional --prod --frozen-lockfile
 
 # COPY lib/dist /automations/lib
 # RUN find /automations

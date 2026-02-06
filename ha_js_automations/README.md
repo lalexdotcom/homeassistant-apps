@@ -1,4 +1,4 @@
-# JS/TS Automations App
+# JS Automations App
 
 > [!WARNING]
 > This application is currently a **Proof of Concept (POC)**. It is not yet optimized for performance and should **not be used in production environments**.

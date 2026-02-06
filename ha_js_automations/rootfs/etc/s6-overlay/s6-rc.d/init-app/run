@@ -18,7 +18,7 @@ echo "export default ${actions} as const;" > /automations/ha-js-automations/src/
 cat /automations/ha-js-automations/src/const/actions.ts
 
 cd /automations/ || bashio::debug "Could not change working directory"
-pnpm build
+# pnpm build
 
 # Install user configured/requested packages
 if bashio::config.has_value 'npm_packages'; then
@@ -29,7 +29,7 @@ if bashio::config.has_value 'npm_packages'; then
         npmlist+=("$package")
     done
 
-    pnpm install \
+    pnpm install --no-optional --prod \
         "${npmlist[@]}" \
            || bashio::exit.nok "Failed to install a specified pnpm package"
 fi
