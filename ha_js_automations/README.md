@@ -16,6 +16,41 @@ This app brings modern web development practices to Home Assistant automation by
 - 🎯 **Reactive Automations**: Powerful API built on top of the [ha-ws-js-sugar](https://github.com/lalexdotcom/ha-ws-js-sugar) package
 - 🐳 **Multi-Architecture**: Runs on both ARM (Raspberry Pi) and x86 systems
 
+## Usage
+
+### Basic Example
+
+Create a script in the VSCode editor (files are stored in the app's folder):
+
+```typescript
+import { connection } from "ha-js-automations";
+
+// Get an entity
+const testBoolean = await connection.getEntity(
+  "input_boolean.test_input_boolean",
+);
+
+// Access the current state
+console.log("Current state:", testBoolean.state);
+
+// Listen to state changes
+testBoolean?.addListener((newState, oldState) => {
+  console.log("State changed from:", oldState, "to", newState);
+});
+```
+
+### Script Organization
+
+Your automation scripts should be placed in the app-specific config directory. Each TypeScript/JavaScript file is treated as an independent automation that runs in its own context.
+
+The key difference from using `ha-ws-js-sugar` directly is that you must import `connection` from the `ha-js-automations` package:
+
+```typescript
+import { connection } from "ha-js-automations";
+```
+
+This provides a pre-configured WebSocket connection to your Home Assistant instance.
+
 ## Installation
 
 ### Prerequisites
@@ -55,41 +90,6 @@ The app provides the following configuration options:
 - List of additional npm packages to install in your automation environment
 - Example: `axios`, `date-fns`, `lodash`
 - Default: `[]`
-
-## Usage
-
-### Basic Example
-
-Create a script in the VSCode editor (files are stored in `/automations/main/scripts`):
-
-```typescript
-import { connection } from "ha-js-automations";
-
-// Get an entity
-const testBoolean = await connection.getEntity(
-  "input_boolean.test_input_boolean",
-);
-
-// Access the current state
-console.log("Current state:", testBoolean.state);
-
-// Listen to state changes
-testBoolean?.addListener((newState, oldState) => {
-  console.log("State changed from:", oldState, "to", newState);
-});
-```
-
-### Script Organization
-
-Your automation scripts should be placed in the `scripts` directory. Each TypeScript/JavaScript file is treated as an independent automation that runs in its own context.
-
-The key difference from using `ha-ws-js-sugar` directly is that you must import `connection` from the `ha-js-automations` package:
-
-```typescript
-import { connection } from "ha-js-automations";
-```
-
-This provides a pre-configured WebSocket connection to your Home Assistant instance.
 
 ## Development
 
